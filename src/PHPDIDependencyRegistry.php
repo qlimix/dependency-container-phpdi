@@ -34,6 +34,28 @@ final class PHPDIDependencyRegistry implements DependencyRegistryInterface
         $this->phpdi->set($id, $value);
     }
 
+    public function setMaker(string $id, callable $maker)
+    {
+        $this->phpdi->set($id, $maker);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function make(string $id)
+    {
+        return $this->phpdi->make($id);
+    }
+
+    public function merge(string $id, array $value): void
+    {
+        if (!$this->has($id)) {
+            $this->setValue($id, $value);
+        }
+
+        $this->setValue($id, array_merge_recursive($this->get($id), $value));
+    }
+
     /**
      * @inheritDoc
      */
