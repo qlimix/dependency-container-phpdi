@@ -34,7 +34,7 @@ final class PHPDIDependencyRegistry implements DependencyRegistryInterface
         $this->phpdi->set($id, $value);
     }
 
-    public function setMaker(string $id, callable $maker)
+    public function setMaker(string $id, callable $maker): void
     {
         $this->phpdi->set($id, $maker);
     }
