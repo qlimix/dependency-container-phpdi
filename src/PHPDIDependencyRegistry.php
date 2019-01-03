@@ -42,7 +42,7 @@ final class PHPDIDependencyRegistry implements DependencyRegistryInterface
     /**
      * @inheritDoc
      */
-    public function make(string $id, ?string $setId)
+    public function make(string $id, ?string $setId = null)
     {
         $object = $this->phpdi->make($id);
         if ($setId !== null) {
