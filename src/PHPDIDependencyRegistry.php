@@ -3,9 +3,9 @@
 namespace Qlimix\DependencyContainer\PHPDI;
 
 use DI\Container;
-use Qlimix\DependencyContainer\DependencyRegistryInterface;
+use Qlimix\DependencyContainer\RegistryInterface;
 
-final class PHPDIDependencyRegistry implements DependencyRegistryInterface
+final class PHPDIDependencyRegistry implements RegistryInterface
 {
     /** @var Container */
     private $phpdi;
