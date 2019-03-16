@@ -10,9 +10,6 @@ final class PHPDIDependencyRegistry implements RegistryInterface
     /** @var Container */
     private $phpdi;
 
-    /**
-     * @param Container $phpdi
-     */
     public function __construct(Container $phpdi)
     {
         $this->phpdi = $phpdi;
@@ -23,7 +20,9 @@ final class PHPDIDependencyRegistry implements RegistryInterface
      */
     public function set(string $id, callable $service): void
     {
-        $this->phpdi->set($id, $service);
+        $this->phpdi->set($id, function () use ($service) {
+            return $service($this);
+        });
     }
 
     /**
@@ -36,7 +35,9 @@ final class PHPDIDependencyRegistry implements RegistryInterface
 
     public function setMaker(string $id, callable $maker): void
     {
-        $this->phpdi->set($id, $maker);
+        $this->phpdi->set($id, function () use ($maker) {
+            return $maker($this);
+        });
     }
 
     /**
