@@ -47,7 +47,7 @@ final class PHPDIDependencyRegistry implements RegistryInterface
     {
         $object = $this->phpdi->make($id);
         if ($setId !== null) {
-            $this->set($setId, $object);
+            $this->setValue($setId, $object);
         }
 
         return $object;
