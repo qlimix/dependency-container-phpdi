@@ -136,6 +136,28 @@ final class PHPDIDependencyRegistryTest extends TestCase
     /**
      * @test
      */
+    public function shouldMergeNoneSetId(): void
+    {
+        $id = 'id';
+
+        $moreValues = [
+            'foo' => 'foo',
+            'bar' => 'foo',
+            'foobar' => 'barfoo',
+        ];
+
+        $this->registry->merge($id, $moreValues);
+
+        $values = $this->registry->get($id);
+
+        $this->assertSame('foo' ,$values['foo']);
+        $this->assertSame('foo' ,$values['bar']);
+        $this->assertSame('barfoo' ,$values['foobar']);
+    }
+
+    /**
+     * @test
+     */
     public function shouldHaveValueId(): void
     {
         $id = 'id';
