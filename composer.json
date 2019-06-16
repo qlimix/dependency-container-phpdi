@@ -1,29 +1,32 @@
 {
-  "name": "qlimix/dependency-container-pimple",
-  "type": "library",
-  "license": "mit",
-  "authors": [
-    {
-      "name": "Frank",
-      "email": "frank@qlimix.net"
+    "name": "qlimix/dependency-container-phpdi",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Frank",
+            "email": "frank@qlimix.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Qlimix\\DependencyContainer\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Qlimix\\Tests\\DependencyContainer\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.2",
+        "qlimix/dependency-container": "^1.0",
+        "php-di/php-di": "^6.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "require-dev": {
+        "qlimix/code-standard": "^1.0"
     }
-  ],
-  "autoload": {
-    "psr-4": {
-      "Qlimix\\DependencyContainer\\": "src/"
-    }
-  },
-  "require": {
-    "qlimix/dependency-container": "dev-master",
-    "php-di/php-di": "^6.0"
-  },
-  "config": {
-    "sort-packages": true
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "git@bitbucket.org:qlimix/dependency-container.git"
-    }
-  ]
 }

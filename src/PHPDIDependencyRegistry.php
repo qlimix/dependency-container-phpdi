@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Qlimix\DependencyContainer\PHPDI;
+namespace Qlimix\DependencyContainer;
 
 use DI\Container;
-use Qlimix\DependencyContainer\RegistryInterface;
+use function array_replace_recursive;
 
 final class PHPDIDependencyRegistry implements RegistryInterface
 {
@@ -53,13 +53,16 @@ final class PHPDIDependencyRegistry implements RegistryInterface
         return $object;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function merge(string $id, array $value): void
     {
         if (!$this->has($id)) {
             $this->setValue($id, $value);
         }
 
-        $this->setValue($id, array_merge_recursive($this->get($id), $value));
+        $this->setValue($id, array_replace_recursive($this->get($id), $value));
     }
 
     /**
@@ -73,7 +76,7 @@ final class PHPDIDependencyRegistry implements RegistryInterface
     /**
      * @inheritDoc
      */
-    public function has($id)
+    public function has($id): bool
     {
         return $this->phpdi->has($id);
     }
