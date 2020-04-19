@@ -7,8 +7,7 @@ use function array_replace_recursive;
 
 final class PHPDIDependencyRegistry implements RegistryInterface
 {
-    /** @var Container */
-    private $phpdi;
+    private Container $phpdi;
 
     public function __construct(Container $phpdi)
     {
